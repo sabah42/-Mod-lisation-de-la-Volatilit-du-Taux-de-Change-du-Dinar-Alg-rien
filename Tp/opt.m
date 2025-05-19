@@ -1,5 +1,5 @@
 function [lfct] = opt(vect)
-load donné x p q K n
+load donnÃ© x p q K n
 %alph=vect(1:K)';
 %phi0=vect(K+1:2*K)';
 phi0=vect(1:K);
