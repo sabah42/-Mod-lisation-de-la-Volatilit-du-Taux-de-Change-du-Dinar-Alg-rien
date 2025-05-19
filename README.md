@@ -23,7 +23,7 @@ L’approche se base sur des techniques d’analyse de séries chronologiques, i
 Contient les séries temporelles mensuelles des taux de change (source : Banque d’Algérie).
 
 **notebooks/**  
-- `PFE_MAR_MAR-ARCH.ipynb` : Analyse, modélisation et comparaison des modèles SARIMA, MAR et MAR-ARCH.
+- `Tp` : Analyse, modélisation et comparaison des modèles SARIMA, MAR et MAR-ARCH.
 
 **results/**  
 - Graphiques de séries, fonctions d’autocorrélation, diagnostics de stationnarité  
