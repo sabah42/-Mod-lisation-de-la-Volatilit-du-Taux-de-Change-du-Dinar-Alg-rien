@@ -103,7 +103,7 @@ for it=1:itmax
             end
         end
     end
-    % les dérivées
+    % les dÃ©rivÃ©es
     for k=1:K
         for t=p+q+1:n
             dhdbeta(1,t,k)=1;
@@ -154,6 +154,7 @@ end
     Phi=phi(:,:,end);
     Beta0=beta0(end,:);
     Beta=beta(:,:,end);
+end
 end
 
 
