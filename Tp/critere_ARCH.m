@@ -3,7 +3,7 @@ function [para,BIC]=critere_ARCH(Phi0,Phi,Beta0,Beta,Alpha,x,vectp,vectq)
 [q,K]=size(Beta);
 n=length(x);
 N=n-p-q;
-%***************** le nbr de paramètres estimés non nul ******************* 
+%***************** le nbr de paramÃ¨tres estimÃ©s non nul ******************* 
 para=0;
 for k=1:K
     if Alpha(k)~=0
@@ -26,7 +26,7 @@ for k=1:K
         end
     end
 end
-%************************ Le critère BIC **********************************
+%************************ Le critÃ¨re BIC **********************************
 for t=p+1:n
     for k=1:K
         e(t,k)=x(t)-Phi0(k);
