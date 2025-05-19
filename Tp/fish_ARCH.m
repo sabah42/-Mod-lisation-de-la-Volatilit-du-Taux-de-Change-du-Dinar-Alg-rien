@@ -15,7 +15,7 @@ for t=p+1:n
         end
     end
 end
-%*********************** Espérance conditionnelle *************************
+%*********************** EspÃ©rance conditionnelle *************************
 for t=p+q+1:n
     for k=1:K
         h(t,k)=Beta0(k);
@@ -26,7 +26,7 @@ for t=p+q+1:n
     end
     tau(t,:)=S/sum(S);
 end
-% ************************ les dérivées utilisés **************************
+% ************************ les dÃ©rivÃ©es utilisÃ©s **************************
 for k=1:K
     for t=p+1:n
         dedphi(1,t,k)=-1;
@@ -412,7 +412,7 @@ I=ICK-IMM;
 I=inv(I);
 dd=diag(I);
 d=sqrt(dd);
-%***************  détermination de l'ecart type théorique *****************
+%***************  dÃ©termination de l'ecart type thÃ©orique *****************
 alphth=d(1:K-1);
 alphth(K)=0;
 for i=1:K-1
