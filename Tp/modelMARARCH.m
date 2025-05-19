@@ -10,48 +10,48 @@ function [Alpha,Phi0,Phi,Beta0,Beta,BIC,H,pvalue,Qstat,CriticalValue,M]=modelMAR
         q=size(Beta,1);
         for k=1:K-1
             if ebs(Alpha(k))*inv(sqrt(Diag(k)))<1.96
-                display 'alpha est significativement égale à zéro'
+                display 'alpha est significativement Ã©gale Ã  zÃ©ro'
                 Alpha=0;
                 
-            else display 'alpha est significativement différent à zéro'
+            else display 'alpha est significativement diffÃ©rent Ã  zÃ©ro'
             end
         end
         for k=1:K
             if abs(Phi0(k)*inv(sqrt(Diag(K+(p+q+2)*(K-1)))))<1.96
-                display 'phi0 est significativement égale à zéro'
+                display 'phi0 est significativement Ã©gale Ã  zÃ©ro'
                 Phi0(k)=0;
-            else  display 'phi0 est significativement différent à zéro'
+            else  display 'phi0 est significativement diffÃ©rent Ã  zÃ©ro'
             end
         end
         for k=1:K
             for j=1:p
                 if abs(Phi(j,k)*inv(sqrt(Diag(K+j+(p+q+2)*(K-1)))))<1.96
-                    display 'phi est significativement égale à zéro'
+                    display 'phi est significativement Ã©gale Ã  zÃ©ro'
                     Phi(j,k)=0;
-                else  display 'phi est significativement différent à zéro'
+                else  display 'phi est significativement diffÃ©rent Ã  zÃ©ro'
                 end
             end
         end
         for k=1:K
             if abs(Beta0(k)*inv(sqrt(Diag(K+p+1+(p+q+2)*(K-1)))))<1.96
-                display 'Beta0 est significativement égale à zéro'
+                display 'Beta0 est significativement Ã©gale Ã  zÃ©ro'
                 Beta0(k)=0;
-            else  display 'Beta0 est significativement différent à zéro'
+            else  display 'Beta0 est significativement diffÃ©rent Ã  zÃ©ro'
             end
         end
         for k=1:K
             for j=1:q
                 if abs(Beta(j,k)*inv(sqrt(Diag(K+j+p+1+(p+q+2)*(K-1)))))<1.96
-                    display 'Beta est significativement égale à zéro'
+                    display 'Beta est significativement Ã©gale Ã  zÃ©ro'
                     Beta(j,k)=0;
-                else  display 'Beta est significativement différent à zéro'
+                else  display 'Beta est significativement diffÃ©rent Ã  zÃ©ro'
                 end
             end
         end
         [test1,test2]=Stationarity_MARARCH(Alpha,Phi,Beta);
         [x_ajust,eps_ajust]=ajust_MARARCH(x,Alpha,Phi0,Phi,Beta0,Beta);
         [BIC,para]=bic_MARARCH(x,Alpha,Phi0,Phi,Beta0,Beta);
-        %%%%%%%%%%%test sur les résidus%%%%%%%%%%%%%%%%
+        %%%%%%%%%%%test sur les rÃ©sidus%%%%%%%%%%%%%%%%
         n=length(x);
         var2=var_marARCH(x,Alpha,Phi0,Phi,Beta0,Beta);
         figure(1)
@@ -72,19 +72,19 @@ function [Alpha,Phi0,Phi,Beta0,Beta,BIC,H,pvalue,Qstat,CriticalValue,M]=modelMAR
         figure(7)
         plot(var2(p+q+1:n))
         parcorr(eps_ajust(p+q+1:n),100)
-        %%%%%%%%%%%%%%%%%%%%%%%%%%nullité de la moyenne%%%%%%%%%%%%%%%%%%%%%%%
+        %%%%%%%%%%%%%%%%%%%%%%%%%%nullitÃ© de la moyenne%%%%%%%%%%%%%%%%%%%%%%%
         M=((mean(eps_ajust(p+q+1:n))*inv(std(eps_ajust(p+q+1:n)))*sqrt(n-para-p-q-1)));
         if abs ((mean(eps_ajust(p+q+1:n))*inv(std(eps_ajust(p+q+1:n)))*sqrt(n-para-p-q-1)))<1.96
-            display 'Le test de la nullité de la moyenne est vérifié'
+            display 'Le test de la nullitÃ© de la moyenne est vÃ©rifiÃ©'
         else
-            display 'Le test de la nullité de la moyenne n''est pas vérifié' 
+            display 'Le test de la nullitÃ© de la moyenne n''est pas vÃ©rifiÃ©' 
         end
         %%%%%%%%%%Test de ljung box %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         [H,pValue,Qstat,CriticalValue]=lbqtest(eps_ajust(p+q+1:n),50,.05,50-para);
         if H==0
-            display 'l''hyothèse de non corrélation est acceptée'
+            display 'l''hyothÃ¨se de non corrÃ©lation est acceptÃ©e'
         else 
-            display 'l''hyothèse de non corrélation est rejetée'
+            display 'l''hyothÃ¨se de non corrÃ©lation est rejetÃ©e'
         end
     end
 end
