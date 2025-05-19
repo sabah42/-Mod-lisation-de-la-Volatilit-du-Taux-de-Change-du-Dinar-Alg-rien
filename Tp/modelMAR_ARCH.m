@@ -13,41 +13,41 @@ q=size(Beta,1);
 
 for k=1:K-1
     if abs(Alpha(k))*inv(alphth(k))<1.96
-        display 'alpha est significativement égale à zéro'
+        display 'alpha est significativement Ã©gale Ã  zÃ©ro'
         Alpha=0;
         
-    else display 'alpha est significativement différent à zéro'
+    else display 'alpha est significativement diffÃ©rent Ã  zÃ©ro'
     end
 end
 for k=1:K
     if abs(Phi0(k)*inv(phi0th(k)))<1.96
-        display 'phi0 est significativement égale à zéro'
+        display 'phi0 est significativement Ã©gale Ã  zÃ©ro'
         Phi0(k)=0;
-    else  display 'phi0 est significativement différent à zéro'
+    else  display 'phi0 est significativement diffÃ©rent Ã  zÃ©ro'
     end
 end
 for k=1:K
     for j=1:vectp(k)
         if abs(Phi(j,k)*inv(phith(j,k)))<1.96
-            display 'phi est significativement égale à zéro'
+            display 'phi est significativement Ã©gale Ã  zÃ©ro'
             Phi(j,k)=0;
-        else  display 'phi est significativement différent à zéro'
+        else  display 'phi est significativement diffÃ©rent Ã  zÃ©ro'
         end
     end
 end
 for k=1:K
     if abs(Beta0(k)*inv(beta0th(k)))<1.96
-        display 'beta0 est significativement égale à zéro'
+        display 'beta0 est significativement Ã©gale Ã  zÃ©ro'
         Phi0(k)=0;
-    else  display 'beta0 est significativement différent à zéro'
+    else  display 'beta0 est significativement diffÃ©rent Ã  zÃ©ro'
     end
 end
 for k=1:K
     for j=1:vectq(k)
         if abs(Beta(j,k)*inv(betath(j,k)))<1.96
-            display 'beta est significativement égale à zéro'
+            display 'beta est significativement Ã©gale Ã  zÃ©ro'
             Phi(j,k)=0;
-        else  display 'beta est significativement différent à zéro'
+        else  display 'beta est significativement diffÃ©rent Ã  zÃ©ro'
         end
     end
 end
@@ -55,7 +55,7 @@ end
 [para,BIC]=critere_ARCH(Phi0,Phi,Beta0,Beta,Alpha,x,vectp,vectq);
 [var]=var_MAR_ARCH(Alpha,Phi0,Phi,Beta0,Beta,x,vectp,vectq);
 
-%************************ test sur les résidus ****************************
+%************************ test sur les rÃ©sidus ****************************
 
 n=length(x);
 
@@ -65,15 +65,15 @@ subplot(3,1,1);
 plot(x(p+q+1:n))
 hold on
 plot(x_ajust(p+q+1:n),'r-')
-title(' Série ajusté ','FontSize', fontSize);
-legend('Série','Série ajusté')
+title(' SÃ©rie ajustÃ© ','FontSize', fontSize);
+legend('SÃ©rie','SÃ©rie ajustÃ©')
 hold off
 subplot(3,1,2);
 plot(var(p+1:n))
-title('Volatilité','FontSize', fontSize);
+title('VolatilitÃ©','FontSize', fontSize);
 subplot(3,1,3);
 plot(eps_ajust(p+q+1:n))
-title('Série résiduelle','FontSize', fontSize);
+title('SÃ©rie rÃ©siduelle','FontSize', fontSize);
 figure(2)
 subplot(2,1,1);
 autocorr(eps_ajust(p+q+1:n))
@@ -85,22 +85,22 @@ figure(3)
  subplot(2,1,2);
   parcorr(eps_ajust(p+q+1:n).^2)
 
-%********************** nullité de la moyenne *****************************
+%********************** nullitÃ© de la moyenne *****************************
 
-M=(mean(eps_ajust(p+q+1:n))*sqrt(n-p-q));%  vérifier les paramètres non nul
+M=(mean(eps_ajust(p+q+1:n))*sqrt(n-p-q));%  vÃ©rifier les paramÃ¨tres non nul
 if abs (M)<1.96
-    display 'Le test de la nullité de la moyenne est vérifié'
+    display 'Le test de la nullitÃ© de la moyenne est vÃ©rifiÃ©'
 else
-    display 'Le test de la nullité de la moyenne n''est pas vérifié'
+    display 'Le test de la nullitÃ© de la moyenne n''est pas vÃ©rifiÃ©'
 end
 
 %************************** Test de ljung box *****************************
 
 [H,pvalue,Qstat,CriticalValue]=lbqtest(eps_ajust(p+q+1:n),200,.05,200);
 if H==0
-    display 'l''hyothèse de non corrélation est acceptée'
+    display 'l''hyothÃ¨se de non corrÃ©lation est acceptÃ©e'
 else
-    display 'l''hyothèse de non corrélation est rejetée'
+    display 'l''hyothÃ¨se de non corrÃ©lation est rejetÃ©e'
 end
 
 
