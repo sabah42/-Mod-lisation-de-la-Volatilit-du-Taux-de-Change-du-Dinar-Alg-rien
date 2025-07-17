@@ -34,7 +34,7 @@ Contient les séries temporelles mensuelles des taux de change (source : Banque 
 - `PFE.pdf` : Rapport complet du mémoire.
 
 **Présentation PowerPoint/** 
-`soutenance.pptx`: Le fichier de présentation utilisé lors de la soutenance du projet.
+- `soutenance.pptx`: Le fichier de présentation utilisé lors de la soutenance du projet.
 
 ## Jeu de données
 Les séries temporelles utilisées couvrent plusieurs années ( 2005-2015) avec les variables suivantes :
